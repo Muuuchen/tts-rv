@@ -1,0 +1,18 @@
+# Eigen 库的 BUILD.gn 文件
+
+# 设置 Eigen 的头文件路径（假设 Eigen 库已经下载到该路径）
+include_dirs = [
+  "//./Eigen",  # 你 Eigen 库的路径
+]
+
+# 添加 OpenMP 编译选项
+cflags = [
+  "-DEIGEN_USE_OPENMP=1",  # 告诉 Eigen 使用 OpenMP
+  "-fopenmp",  # 启用 GCC/Clang 的 OpenMP 支持
+]
+
+# 你可能还需要链接 OpenMP 库（仅 GCC/Clang，MSVC 会自动处理）
+ldflags = [
+  "-lgomp",  # 对于 GCC
+  "-lomp",   # 对于 Clang
+]
